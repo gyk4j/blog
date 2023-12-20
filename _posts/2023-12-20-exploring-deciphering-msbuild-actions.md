@@ -7,15 +7,13 @@ RAR5 and Microsoft Installer `.msi` format archives, and other oddities with the
 includes seeing some files while opening the archive in v16.04, but find that their timestamps were not extracted or collected
 by the test program.
 
-I was opening up the sample test files with 7-Zip v16.04, but the embedded DLL that comes with the [SevenZipSharp][seven-zip-sharp]
-is v16.00. Some date time entries looked different during testing. It seemed to me, on surface that there had been a few bugfixes or 
-changes between v16.00 and v16.04, which .
+I was opening up the sample test files with [7-Zip][7-zip] v16.04, but the embedded DLL that comes with the 
+[SevenZipSharp][seven-zip-sharp] is v16.00. Some date time entries looked different during testing. It seemed to me, on surface that there had been a few bugfixes or changes between v16.00 and v16.04, which allow v16.04 to open and browse RAR5 and MSI files
+successfully, while v16.00 fails to open them, or correctly find all the file entries their timestamps inside.
 
 However, [SevenZipSharp][seven-zip-sharp] library is an abandonware. It was last updated in 12 May 2016, 7 years ago.
 
-To update it with more recent versions of 7-Zip DLL, I guess we would have to do it ourselves. Which brings me examine the `SevenZip.csproj`
-that comes with the project to study how the build process is like in order to embed (or to not embed) the compressed `7z.dll` into
-the resulting `SevenZipSharp.dll` .NET assembly.
+To update it with more recent versions of 7-Zip DLL, I guess we would have to do it ourselves. Which brings me examine the `SevenZip.csproj` that comes with the project to study how the build process is like in order to embed (or to not embed) the compressed `7z.dll` into the resulting `SevenZipSharp.dll` .NET assembly.
 
 A quick glance at the `XML` format project file told me that **[PropertyGroup][propertygroup]** tags seem to indicate available build 
 targets given the **Configuration** and **Platform** setting as provided by the IDE or MSBuild command line.
@@ -26,7 +24,7 @@ A series of **[ItemGroup][itemgroup]** tags follow with no name or label. It was
 **[PropertyGroup][propertygroup]** would select the files in the right **[ItemGroups][itemgroup]** which include the files to be 
 processed (e.g. compile, copied, embedded) in the build outputs.
 
-Some Googling led me to a good explanation of the various actions that can be found in [Learn Microsoft][earn-microsoft] and 
+Some Googling led me to a good explanation of the various actions that can be found in [Learn Microsoft][learn-microsoft] and 
 [StackOverflow][build-actions]. The action is specified by the tag used, and these actions are limited to the few that Microsoft provides
 in [MSBuild][msbuild].
 
