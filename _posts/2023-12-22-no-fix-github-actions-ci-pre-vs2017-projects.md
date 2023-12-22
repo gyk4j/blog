@@ -48,5 +48,5 @@ will keep this aside for now and relook at it in future.
 
 [root-element-missing]: https://stackoverflow.com/questions/57557633/the-project-file-could-not-be-loaded-root-element-is-missing
 [commit]: https://github.com/gyk4j/wreck-net/commit/911abeca303e449ff1c2be8aced67b08c11c2acc
-[ugrade-new-format]: https://www.hanselman.com/blog/upgrading-an-existing-net-project-files-to-the-lean-new-csproj-format-from-net-core
+[upgrade-new-format]: https://www.hanselman.com/blog/upgrading-an-existing-net-project-files-to-the-lean-new-csproj-format-from-net-core
 [new-format]: https://natemcmaster.com/blog/2017/03/09/vs2015-to-vs2017-upgrade/
