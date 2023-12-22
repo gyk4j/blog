@@ -1,0 +1,47 @@
+---
+layout: post
+title:  "No fix for GitHub Actions continuous integration and pre-VS2017 projects"
+---
+
+Tried out a new fix today to no success.
+
+By the way, there is another developer who has reported similar problem with
+building a perfectly functioning .NET 3.5 project locally but not .
+
+Did the [following changes][commit]:
+
+1. Enable `workflow dispatch` event so that we can run the build manually
+2. Disable installation of .NET Core on runner
+3. Specify platform and .NET target framework version in MSBuild command line
+
+I have already downgraded to using Windows 2019 runner with .NET Framework 4.7.2
+to build an older Visual Studio solution.
+
+Seeing no other necsssary fixes that can be tried, I turned to research on the
+Visual Studio `.csproj` format instead. Are there major breaking changes in the
+XML format that are causing newer MSBuild to fail to parse?
+
+Is upgrading to a new project file format necessary in order to get it to build 
+successfully?
+
+Apparently, Microsoft does not care when it introduced 
+[a new format in Visual Studio 2017][upgrade-new-format]. The changes are 
+further elaborated [here][new-format].
+
+Perhaps it's Microsoft's way of forcing developers and users to upgrade to the 
+latest Visual Studio and Windows. It's free, what's there to grumble about?
+
+In any case, it is either we convert to the new format or stick to building our
+old pre-VS2017 solutions and projects locally on developer workstation or using 
+our own CI software whether on-premise or a third-party hosted CI solution e.g.
+[TeamCity][https://www.jetbrains.com/teamcity/], 
+[Circle CI][https://circleci.com/] and 
+[Travis CI][https://www.travis-ci.com/].
+
+GitHub Actions for now does not offer an option to build pre-Visual Studio 2017
+solutions/projects. So now that we know why even a simple build is failing. I
+will keep this aside for now and relook at it in future.
+
+[commit]: https://github.com/gyk4j/wreck-net/commit/911abeca303e449ff1c2be8aced67b08c11c2acc
+[ugrade-new-format]: https://www.hanselman.com/blog/upgrading-an-existing-net-project-files-to-the-lean-new-csproj-format-from-net-core
+[new-format]: https://natemcmaster.com/blog/2017/03/09/vs2015-to-vs2017-upgrade/
