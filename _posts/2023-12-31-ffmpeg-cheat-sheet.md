@@ -11,11 +11,11 @@ these commands into a cheat sheet.
 Majority of the information are taken from FFMPEG's 
 [H.264 Video Encoding Guide][h264] and [MPEG-4 Encoding Guide][asp].
 
-{% include note.html content="**Note**: Newlines have been added to each switch/parameter for readability." type="info" %} 
+**Note**: Newlines have been added to each switch/parameter for readability.
 
 # Transcoding (and scaling) to MP4 H.264
 
-{% include note.html content="**Note**: `-pix_fmt yuv420p` is always required for Explorer to make a thumbnail from the video." type="info" %} 
+**Note**: `-pix_fmt yuv420p` is always required for Explorer to make a thumbnail from the video.
 
 ## Convert AVI to MP4 (H.264) and resize to 240p Full HD resolution
 
