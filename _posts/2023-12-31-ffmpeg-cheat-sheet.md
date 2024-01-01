@@ -13,6 +13,16 @@ Majority of the information are taken from FFMPEG's
 
 **Note**: Newlines have been added to each switch/parameter for readability.
 
+# Getting metadata
+
+Format can be: `csv`, `compact`, `json`, `xml`, `flat` etc.
+
+```shell
+ffprobe -v quiet -print_format xml -show_format file.avi
+ffprobe -v quiet -print_format json -show_format file.mp4
+ffprobe -hide_banner -print_format flat -show_format file.wmv
+```
+
 # Transcoding (and scaling) to MP4 H.264
 
 **Note**: `-pix_fmt yuv420p` is always required for Explorer to make a thumbnail from the video.
@@ -71,14 +81,15 @@ Information from
 [Comparing video quality by viewing videos side by side][compare-side-by-side].
 
 ```shell
-ffplay
-  -f lavfi 
-    "
-    movie=left.mp4,scale=iw/2:ih[v0];
-	movie=right.mp4,scale=iw/2:ih[v1];
-	[v0][v1]hstack
-    "
+ffplay -f lavfi "movie=left.mp4,scale=iw/2:ih[v0];movie=right.mp4,scale=iw/2:ih[v1];[v0][v1]hstack"
 ```
+
+Simpler example without resizing video to half.
+
+```shell
+ffplay -f lavfi "movie=left.mp4[v0];movie=right.mp4[v1];[v0][v1]hstack"
+```
+
 
 ## Transcode to AVI container with MPEG-4 (ASP) video track and MP3 audio track
 
