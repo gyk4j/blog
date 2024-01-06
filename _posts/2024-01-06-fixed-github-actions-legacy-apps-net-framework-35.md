@@ -25,8 +25,9 @@ However, we can supply the same set of solution and project files to the MSBuild
 from .NET Framework 3.5 and it would build successfully without warnings or 
 errors. Thus, we can be confident that the files are actually working, except
 newer MSBuild do not accept them. In my opinion, it would have been better for
-MSBuild to report a more accurate error message even if it does not support a 
-solution or project of an earlier version or provide backward compatibility.
+MSBuild to report a more accurate error message even if it does not provide 
+backward compatibility for an older solution or project file in an earlier 
+format.
 
 # Installing .NET Framework 3 on Windows 2019 GitHub Runner
 
@@ -47,11 +48,11 @@ to get it installed:
 jobs:
   build:
     runs-on: windows-2019
-	steps:
-	  - name: "Install .NET Framework 3.5"
-	    run: Enable-WindowsOptionalFeature -Online -FeatureName "Netfx3" -All
+    steps:
+      - name: "Install .NET Framework 3.5"
+        run: Enable-WindowsOptionalFeature -Online -FeatureName "Netfx3" -All
       - name: "Build"
-	    run: C:\Windows\Microsoft.NET\Framework\v3.5\MSBuild.exe solution.sln
+        run: C:\Windows\Microsoft.NET\Framework\v3.5\MSBuild.exe solution.sln
   
 ```
 
@@ -73,19 +74,19 @@ effect with:
 jobs:
   build:
     runs-on: windows-2019
-	steps:
-	  - name: "Install .NET Framework 3.5"
-	    run: choco install dotnet3.5 
+    steps:
+      - name: "Install .NET Framework 3.5"
+        run: choco install dotnet3.5 
       - name: "Build"
-	    run: C:\Windows\Microsoft.NET\Framework\v3.5\MSBuild.exe solution.sln
+        run: C:\Windows\Microsoft.NET\Framework\v3.5\MSBuild.exe solution.sln
 ```
 However, I have not tested the above method.
 
 # Longer build time
 
 Something that I need to mention is while we manage to install .NET Framework 
-3.5 and building our legacy solution and projects successfully, the downloading 
-and installation of .NET Framework 3.5 
+3.5 and build our legacy solution and projects successfully, the downloading and 
+installation of .NET Framework 3.5 is repetitive and time-consuming.
 
 On a stateless GitHub runner that has to repeat this re-installation every time 
 it is run, this means a minimum build time of 5 to 7 minutes is inevitable. This
@@ -102,15 +103,16 @@ Framework with the newer cross-platform .NET Core. These bad advice may lead
 people down the wrong path of resolving their classic .NET Framework problem.
 
 For the modern .NET Core, one would use the 
-`[setup-dotnet][setup-dotnet]` action to install the required .NET Core SDK CLI 
+[setup-dotnet][setup-dotnet] action to install the required .NET Core SDK CLI 
 tools. This is readily supported and widely described.
 
 # Good times may not last
 
 As soon as Microsoft figures out people are still using their GitHub Actions
-to build legacy applications, and reducing developers' inclination to upgrade to
-the latest .NET Core, .NET Standard and Visual Studio, perhaps it may try more 
-ways to make installation of .NET Framework 3.5 on newer Windows impossible.
+to build legacy applications, which reduces developers' inclination to upgrade 
+to the latest .NET Core, .NET Standard and Visual Studio, perhaps it may try 
+more ways to make installation of .NET Framework 3.5 on newer Windows versions
+impossible.
 
 Thus this solution may not last forever, especially when the Windows 2019 runner 
 image becomes deprecated sometime in the future. Enjoy while it lasts folks!
