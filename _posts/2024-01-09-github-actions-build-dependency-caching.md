@@ -30,7 +30,7 @@ jobs:
   build:
     ...
     runs-on: windows-2019
-	...
+    ...
     steps:
       - name: Cache .Net Framework 3.5
         id: cache-net-framework-35
@@ -42,9 +42,9 @@ jobs:
             C:/Windows/Microsoft.NET/Framework/v2.0.50727
             C:/Windows/Microsoft.NET/Framework/v3.0
             C:/Windows/Microsoft.NET/Framework/v3.5
-          key: ${{ runner.os }}-build-${{ env.cache-name }}
+          key: "${{ runner.os }}-build-${{ env.cache-name }}"
 
-      - if: ${{ steps.cache-net-framework-35.outputs.cache-hit != 'true' }}    
+      - if: "${{ steps.cache-net-framework-35.outputs.cache-hit != 'true' }}"    
         name: Setup .NET Framework 3.5
         continue-on-error: true
         run: Enable-WindowsOptionalFeature -Online -FeatureName "NetFx3" -All
