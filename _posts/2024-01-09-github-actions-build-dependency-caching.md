@@ -11,9 +11,9 @@ Essentially I followed the
 accordingly.
 
 Luckily the complications that I feared did not materialize. These include 
-the .NET Framework installation writing registry keys and values, or
-installing additional files elsewhere on the file system apart from those under 
-`C:\Windows\Microsoft.NET` which it depends upon for proper functioning.
+the .NET Framework installation writing critical registry keys and values, or
+installing files outside of the cached `C:\Windows\Microsoft.NET`, which it 
+may require for proper operation.
 
 For now, simply caching and restoring the installed .NET Framework tools and 
 files  under the following directories would still build the solution and
@@ -25,14 +25,13 @@ projects successfully:
 
 The significant step that I have added to enable dependency caching is:
 
-```yaml
+{% highlight yaml %}
+{% raw %}
 jobs:
   build:
-    ...
     runs-on: windows-2019
-    ...
     steps:
-      - name: Cache .Net Framework 3.5
+      - name: "Cache .Net Framework 3.5"
         id: cache-net-framework-35
         uses: actions/cache@v3
         env:
@@ -42,13 +41,14 @@ jobs:
             C:/Windows/Microsoft.NET/Framework/v2.0.50727
             C:/Windows/Microsoft.NET/Framework/v3.0
             C:/Windows/Microsoft.NET/Framework/v3.5
-          key: "$"{{ runner.os }}-build-"$"{{ env.cache-name }}
+          key: ${{ runner.os }}-build-${{ env.cache-name }}
 
-      - if: "$"{{ steps.cache-net-framework-35.outputs.cache-hit != 'true' }}    
-        name: Setup .NET Framework 3.5
+      - if: ${{ steps.cache-net-framework-35.outputs.cache-hit != 'true' }}    
+        name: "Setup .NET Framework 3.5"
         continue-on-error: true
         run: Enable-WindowsOptionalFeature -Online -FeatureName "NetFx3" -All
-```
+{% endraw %}
+{% endhighlight %}
 
 ![Dependency cache](/blog/assets/images/2024-01-09-dependency-cache.png)
 
