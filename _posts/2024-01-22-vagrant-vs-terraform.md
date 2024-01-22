@@ -11,7 +11,7 @@ the other?
 
 At their core, both are designed to automate the creation of virtual machines 
 and the the recreation of computing environments. Pretty much the 
-[Docker Compose] of virtual machines.
+[Docker Compose][docker-compose] of virtual machines.
 
 So like everyone, I googled and found an authoritative article from their 
 creator and maintainer [HashiCorp][hashi-corp] aptly titled 
@@ -139,5 +139,6 @@ for them to investigate for learning and adoption.
 
 [vagrant]: https://www.vagrantup.com/
 [terraform]: https://www.hashicorp.com/products/terraform
+[docker-compose]: https://docs.docker.com/compose/
 [hashi-corp]: https://www.hashicorp.com/
 [vagrant-vs-terraform]: https://developer.hashicorp.com/vagrant/intro/vs/terraform
