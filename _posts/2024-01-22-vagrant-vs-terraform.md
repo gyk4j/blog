@@ -41,6 +41,12 @@ Given a long enough `Vagrantfile` written in Ruby, perhaps it can also recreate
 a similarly complex setup with multiple virtual machines? So what are the things
 it cannot do that Terraform can? This does not elaborate further in details.
 
+As a side note, I suspect the network configuration options in 
+[Vagrant][vagrant] are more limited and less granular than those available in 
+[Terraform][terraform] which allow users to explicitly describe complex 
+networking between virtual machines in different cloud service providers, though
+this needs to be confirmed. 
+
 ## Example 3
 
 > Terraform is focused on infrastructure management and not development 
@@ -74,8 +80,8 @@ Finally, it finishes off by concluding that:
 > primarily for local development environments that use only a handful of 
 > virtual machines at most.
 >   
-> Vagrant is for development environments. Terraform is for more general 
-> infrastructure management.
+> Vagrant is for **development environments**. Terraform is for more general 
+> **infrastructure management**.
 
 The final two paragraphs tell us what we actually need to know, and I agree this
 main message is helpful: Terraform for large production environment, and Vagrant
@@ -83,7 +89,8 @@ for small development environment.
 
 Still, people are left to wonder how "extremely large" of an infrastructure it 
 should be to definitely choose Terraform over Vagrant. And what do we mean by 
-"a handful"? Two, five or ten VMs? The clarity is not there.
+"a handful"? Two, five or ten VMs? And is managing development environment part
+of **infrastructure management**? The clarity is not there.
 
 ## Reading between the lines
 
@@ -116,22 +123,42 @@ In short, the differences are:
 | Hypervisor           | Type 2 (e.g. Oracle VirtualBox, VMWare Fusion/Workstation, Microsoft Virtual PC, Parallel Desktop) | Type 1 (e.g. VMWare vSphere/ESXi, Microsoft Hyper-V, KVM, Xen)                                                               |
 
 Note that this is a simplication to compare and contrast to help people make a 
-decision. Certainly, there could be cases where people install a type 1 
-hypervisor on a workstation or desktop PC for small scale experimentation or 
-repurposing consumer grade hardware for a home server. Or at the other extreme 
-end of the spectrum, people writing elaborate `Vagrantfile` just to mimic a very
-complex setup running on a type 2 hypervisor on a single host.
+decision.
+
+# Disclaimer for edge and atypical use cases
+
+Certainly, there could be cases where people install a type 1 hypervisor on a 
+workstation or desktop PC for small scale experimentation or repurposing 
+consumer grade hardware for a home server. And this opens up the door to test-
+drive Terraform on a local machine.
+
+And there could be people deploying a *simple setup* consisting of one virtual 
+machine instance to a public cloud provider like Amazon, Azure or Google Cloud
+Platform. In this case, [Vagrant][vagrant] can possibly
+[achieve this too with the right plug-in][vagrant-aws], as well as 
+[Terraform][terraform].
+
+Or at the other extreme end of the spectrum, people writing long elaborate 
+`Vagrantfile` just to mimic a very complex setup running on a type 2 hypervisor 
+on a single host. That single virtual machine host may well be a souped-up 
+machine with dual Intel Xeon processors paired with 128 GB of RAM, enough to run
+quite a few virtual machines concurrently. Who knows what creative people can 
+attempt to do?
+
+And then, it may boil down to user's preferred language (Ruby or YAML) to 
+describe their virtual machine environment.
 
 # Conclusion
 
-Vagrant and Terraform are both good products in their own right, and have their
-own place. It is just a pity that HashiCorp has not made it easy for people to
-decide at one glance which one is most suitable for them.
+[Vagrant][vagrant] and [Terraform][terraform] are both good products in their 
+own right, and each has their own place. It is just a pity that 
+[HashiCorp][[hashi-corp] has not made it easy for people to decide at one glance
+which one is more suitable for them.
 
-I understand that Vagrant is an open source community-driven technology that
-HasiCorp does not make money from, and it has the incentive to push for and 
-promote Terraform instead which actually brings it money. This might be the 
-business reason behind its less proactive attitude toward it.
+I understand that [Vagrant][vagrant] is an open source community-driven 
+technology that HashiCorp does not make money from. Instead it has the 
+incentive to push for and promote Terraform which actually brings it money. This
+might be the business reason behind its less proactive attitude toward it.
 
 Hopefully, my own overly-simplified (and perhaps less accurate) personal 
 interpretation can help some people to decide which technology is more suitable 
@@ -142,3 +169,4 @@ for them to investigate for learning and adoption.
 [docker-compose]: https://docs.docker.com/compose/
 [hashi-corp]: https://www.hashicorp.com/
 [vagrant-vs-terraform]: https://developer.hashicorp.com/vagrant/intro/vs/terraform
+[vagrant-aws]: https://devops.com/devops-primer-using-vagrant-with-aws/
