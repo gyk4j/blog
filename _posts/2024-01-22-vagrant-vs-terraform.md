@@ -15,10 +15,9 @@ and the the recreation of computing environments. Pretty much the
 
 So like everyone, I googled and found an authoritative article from their 
 creator and maintainer [HashiCorp][hashi-corp] aptly titled 
-["Vagrant vs. Terraform"][vagrant-vs-terraform]. I read... and had to re-read a 
-couple of times to nitpick over the choice of words to spot the subtle 
-differences and derive the surrounding implications behind the jargons and 
-terminologies.
+["Vagrant vs. Terraform"][vagrant-vs-terraform]. I read -- and had to re-read a 
+couple of times -- nitpicking over the choice of words in order to spot the 
+subtle differences and implications behind the jargons and terminologies.
 
 # Criticisms of HashiCorp's explanation
 
@@ -26,8 +25,8 @@ Why is it difficult to understand you may ask. Let me quote a few examples.
 
 ## Example 1
 
-> Vagrant is a tool focused for managing development environments and Terraform 
-> is a tool for building infrastructure.
+> Vagrant is a tool focused for **managing development environments** and  
+> Terraform is a tool for **building infrastructure**.
 
 Isn't creating and recreating a development or test environment "building 
 infrastructure" too?
@@ -49,15 +48,22 @@ this needs to be confirmed.
 
 ## Example 3
 
-> Terraform is focused on infrastructure management and not development 
-> environments
+> Terraform is focused on **infrastructure management** and not 
+> **development environments**
 
 People may be wondering how different a production environment and development 
 environment can be. In some cases, developers try to recreate the development 
 environment as closely as possible to the real thing, to the point of creating 
 an exact duplicate clone setup. It all depends on the simplified adaptations
-adopted for a development setup. And these differ between every organizations, 
-systems and projects.
+adopted for a development setup. And these differ between every organization, 
+system and project.
+
+For users whose development, testing, staging and production environments are
+exact replicas or clones of one another, would it make a difference between 
+choosing Vagrant or Terraform? And what are the implications for choosing one 
+over the other?
+
+These are unanswered.
 
 ## Example 4
 
@@ -84,8 +90,8 @@ Finally, it finishes off by concluding that:
 > **infrastructure management**.
 
 The final two paragraphs tell us what we actually need to know, and I agree this
-main message is helpful: Terraform for large production environment, and Vagrant
-for small development environment. 
+main message is helpful: Terraform is for large production cloud/remote 
+environment, and Vagrant is for small local development environment. 
 
 Still, people are left to wonder how "extremely large" of an infrastructure it 
 should be to definitely choose Terraform over Vagrant. And what do we mean by 
@@ -141,9 +147,12 @@ Platform. In this case, [Vagrant][vagrant] can possibly
 Or at the other extreme end of the spectrum, people writing long elaborate 
 `Vagrantfile` just to mimic a very complex setup running on a type 2 hypervisor 
 on a single host. That single virtual machine host may well be a souped-up 
-machine with dual Intel Xeon processors paired with 128 GB of RAM, enough to run
-quite a few virtual machines concurrently. Who knows what creative people can 
-attempt to do?
+machine with dual Intel Xeon or AMD EPYC processors paired with 128 GB of RAM, 
+enough to run quite a few virtual machines concurrently. Or some old rack or 
+blade server lying on someone's table?
+
+Who can predict what creative people would attempt to do with what they have or 
+can afford?
 
 And then, it may boil down to user's preferred language (Ruby or YAML) to 
 describe their virtual machine environment.
@@ -152,13 +161,14 @@ describe their virtual machine environment.
 
 [Vagrant][vagrant] and [Terraform][terraform] are both good products in their 
 own right, and each has their own place. It is just a pity that 
-[HashiCorp][[hashi-corp] has not made it easy for people to decide at one glance
+[HashiCorp][hashi-corp] has not made it easy for people to decide at one glance
 which one is more suitable for them.
 
 I understand that [Vagrant][vagrant] is an open source community-driven 
-technology that HashiCorp does not make money from. Instead it has the 
-incentive to push for and promote Terraform which actually brings it money. This
-might be the business reason behind its less proactive attitude toward it.
+technology that [HashiCorp][hashi-corp] does not make money from. Instead it has
+the incentive to push for and promote [Terraform][terraform] which actually 
+brings it money. This may be the business reason behind its less proactive 
+attitude toward it.
 
 Hopefully, my own overly-simplified (and perhaps less accurate) personal 
 interpretation can help some people to decide which technology is more suitable 
