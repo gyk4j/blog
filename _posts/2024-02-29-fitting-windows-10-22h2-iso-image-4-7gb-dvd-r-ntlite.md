@@ -4,20 +4,20 @@ title:  "Fitting Windows 10 22H2 ISO image on 4.7 GB DVD-R with NTLite"
 ---
 
 The last official release of Windows 10 is 22H2, and I wanted to make an 
-archived copy of the installation media for use with any future Windows 10 
-reinstallation on my devices.
+archived copy of the installation media for Windows 10 installation on my 
+devices.
 
 # Using optical disc as installation media
 
-In 2024, why am I still using DVD-R optical disc for software installation? 
+In 2024, why am I still using DVD-R optical discs for software installation? 
 This must be unthinkable for most modern techies who live on the cutting edge.
 
 The simple truth is that I do not have many spare USB flash drives lying around 
 at home, so I am conservative about their use unless it's necessary. Also, I 
-have some old DVD-R and CD-R lying around unused, so why not make use of them 
+have some old DVD-Rs and CD-Rs lying around unused, so why not make use of them 
 instead?
 
-In addition, DVD-R and CD-R are write-once read-many (WORM) media. I can be
+In addition, DVD-Rs and CD-Rs are write-once read-many (WORM) media. I can be
 comfortably confident that once written, the installation media files cannot be 
 subtly modified by malware or corrupted by a bad disk drive in the future.
 
@@ -25,9 +25,9 @@ subtly modified by malware or corrupted by a bad disk drive in the future.
 
 Windows 10 22H2 has [grown too big to fit onto standard sized 4.7 GB DVD-R][build-1803]. 
 
-A couple of years ago with earlier versions of Windows 10 however, they did 
-manage to squeeze in under 4.7 GB. So their ISO image could fit in just fine 
-without additional hacking.
+A couple of years ago with earlier versions of Windows 10 however, they came in 
+at under 4.7 GB. So their ISO image could fit onto any DVD-R just fine without 
+additional hacking.
 
 Netizens have proposed some solutions and workarounds. These include:
 
@@ -35,9 +35,12 @@ Netizens have proposed some solutions and workarounds. These include:
 
 Some suggested [using the Windows 10 build 1803 ISO][build-1803] from 2018 as a 
 workaround, but it's not ideal. Why install an older version, and then have to 
-waste more time on Windows Update downloading and applying software updates and 
-patches released between 2018 until 2022? That may span several gigabytes of 
-updates that may take 30 minutes or an hour to run?
+waste more time on [Windows Update][windows-update] downloading and applying 
+software updates and patches released between 2018 until 2022? That may span 
+several gigabytes worth of updates requiring 30 minutes to an hour to run?
+
+It is better to install from an up-to-date installation media and be done with
+the latest updates in one go.
 
 ## Solution 2: Use a 8.5 GB DVD-R DL disc for Windows 10 22H2
 
@@ -48,7 +51,7 @@ offices and homes.
 
 Thus, I am not going to spend more money and time hunting around for them.
 
-## Solution 3: Create and use a modified, stripped down WIndows 10 22H2 ISO image
+## Solution 3: Create and use a modified, stripped down Windows 10 22H2 ISO image
 
 This idea came from Redditor *heartprairie* who reported customizing the
 installation media ISO image created by Windows 10 Media Creation Tool 
@@ -63,15 +66,21 @@ Here's how I did it based on the brief description.
 
 1. Download and install [NTLite][ntlite]. Choose the **Free license** for 
    individual / home / private use. It is already sufficient.
+   
 2. Extract the Windows 10 22H2 ISO image file created by Windows 10 Media 
    Creation Tool into a folder e.g. `C:\temp\W10_22H2` using your preferred 
    archiver or CD/DVD optical disc mastering software (e.g. [7-Zip][7-zip], 
    [WinRAR][winrar], [Nero Burning ROM][nero] or [CDBurnerXP][cdburnerxp])
+   
 3. Start [NTLite][ntlite]
+
 4. **Add Image (ISO, WIM, ESD, SWM)** > Select `\sources\install.esd` in the 
    folder containing extracted files from ISO image
+   
    ![NTLite Add Image](/blog/assets/images/2024-02-29-w10-22h2-ntlite-add.png)
+   
    ![NTLite Browse install.esd](/blog/assets/images/2024-02-29-w10-22h2-ntlite-browse-install-esd.png)
+   
 5. Remove/delete unwanted editions. Repeat for each edition you wish to delete.
    I chose to keep only the common **Home** and **Pro** edition. The N variant 
    editions are not applicable to anyone except perhaps for users in the 
@@ -79,17 +88,27 @@ Here's how I did it based on the brief description.
    the exclusion of certain bundled Microsoft software like Windows Media 
    Player. I also do not foresee needing the **Education** edition and its 
    variants.
+   
    ![NTLite Delete](/blog/assets/images/2024-02-29-w10-22h2-ntlite-delete.png)
+   
    ![NTLite Deleting](/blog/assets/images/2024-02-29-w10-22h2-ntlite-install-esd-deleting.png)
+   
 6. *(Optional)* Right-Click **Operating systems | install.esd**, and 
    **Recompress** the `install.esd` file in [NTLite][ntlite]. The `install.esd` 
-   may shrink to a more optimal size.
+   may shrink to a more optimal size. However, I have not noticed any notable
+   decrease in size from recompressing `install.esd`. YMMV.
+   
    ![NTLite Recompress](/blog/assets/images/2024-02-29-w10-22h2-ntlite-recompress.png)
+   
    ![NTLite Recompressing](/blog/assets/images/2024-02-29-w10-22h2-ntlite-recompress-esd.png)
+   
 7. Right-click the `C:\temp\W10_22H2` folder > **Create ISO** (e.g. 
    `W10_22H2_F.iso`) with [NTLite][ntlite]
+   
    ![NTLite Create ISO](/blog/assets/images/2024-02-29-w10-22h2-ntlite-iso-create.png)
+   
    ![NTLite Creating ISO image](/blog/assets/images/2024-02-29-w10-22h2-ntlite-iso-creating.png)
+   
 8. Check that the new ISO images `W10_22H2_F.iso` is about 4.46 GB now -- small 
    enough to fit onto a normal 4.7 GB DVD-R -- compared to the original 4.77 GB 
    `W10_22H2.iso` ISO image created by Windows 10 Media Creation Tool.
@@ -99,9 +118,13 @@ Here's how I did it based on the brief description.
 9. Test the modified installation media ISO image. During the setup, notice 
    that the list of operating system options available to choose from 
    correspond with the entries in the `install.esd` in [NTLite][ntlite]
+   
    ![Windows 10 22H2 Setup Editions](/blog/assets/images/2024-02-29-w10-22h2-setup-editions.png)
+   
 10. Verify that **Windows 10 22H2** is installed from within the virtual machine
+
     ![Windows 10 22H2 Home](/blog/assets/images/2024-02-29-w10-22h2-home.png)
+	
     ![Windows 10 22H2 Pro](/blog/assets/images/2024-02-29-w10-22h2-pro.png)
    
 Thus I can conclude that my remastered ISO image is able to boot and complete 
@@ -127,6 +150,7 @@ This solution is *NOT RECOMMENDED* by me. So you have been forewarned! If you
 decide to take the risk and try them, you shall bear the responsibility.
 
 [build-1803]: https://www.reddit.com/r/Windows10/comments/ydyks8/if_you_need_to_install_windows_10_via_dvd/
+[windows-update]: https://support.microsoft.com/en-us/windows/windows-update-faq-8a903416-6f45-0718-f5c7-375e92dddeb2
 [dvd-r-dl]: https://www.reddit.com/r/windows/comments/jh8obu/bug_windows_10_media_creation_tools_iso_files_for/
 [heartprairie]: https://www.reddit.com/r/Windows10/comments/ydyks8/comment/iu17jri/
 [ntlite]: https://www.ntlite.com/
