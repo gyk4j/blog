@@ -1,49 +1,54 @@
 ---
 layout: post
-title:  "Fitting Windows 10 22H2 ISO image on 4.7GB DVD-R with NTLite"
+title:  "Fitting Windows 10 22H2 ISO image on 4.7 GB DVD-R with NTLite"
 ---
 
-The last official release of Windows 10 is 22H2, and I thought of making a copy
-of the installation media.
+The last official release of Windows 10 is 22H2, and I wanted to make an 
+archived copy of the installation media for use with any future Windows 10 
+reinstallation on my devices.
 
 # Using optical disc as installation media
 
-In 2024, why am I still using DVD-R optical disc for software installation? This
-is unthinkable for most modern techies who live on the cutting edge.
+In 2024, why am I still using DVD-R optical disc for software installation? 
+This must be unthinkable for most modern techies who live on the cutting edge.
 
 The simple truth is that I do not have many spare USB flash drives lying around 
 at home, so I am conservative about their use unless it's necessary. Also, I 
 have some old DVD-R and CD-R lying around unused, so why not make use of them 
 instead?
 
-# Windows 10 22H2 cannot fit onto 
+In addition, DVD-R and CD-R are write-once read-many (WORM) media. I can be
+comfortably confident that once written, the installation media files cannot be 
+subtly modified by malware or corrupted by a bad disk drive in the future.
 
-Windows 10 22H2 has [grown too big to fit onto standard sized 4.7GB DVD-R][build-1803]. 
+# Problem: Windows 10 22H2 cannot fit onto a normal 4.7 GB DVD-R
+
+Windows 10 22H2 has [grown too big to fit onto standard sized 4.7 GB DVD-R][build-1803]. 
 
 A couple of years ago with earlier versions of Windows 10 however, they did 
-manage to squeeze in under 4.7GB. So their ISO image could fit in just fine 
+manage to squeeze in under 4.7 GB. So their ISO image could fit in just fine 
 without additional hacking.
 
 Netizens have proposed some solutions and workarounds. These include:
 
-## Use an older Windows 10 ISO image (build 1803) that fits under 4.7GB
+## Solution 1: Use an older Windows 10 ISO image (build 1803) that fits under 4.7 GB
 
-Some suggested [using the Windows 10 bio;d 1803 ISO][build-1803] from 2018 as a 
+Some suggested [using the Windows 10 build 1803 ISO][build-1803] from 2018 as a 
 workaround, but it's not ideal. Why install an older version, and then have to 
 waste more time on Windows Update downloading and applying software updates and 
 patches released between 2018 until 2022? That may span several gigabytes of 
 updates that may take 30 minutes or an hour to run?
 
-## Use a 8.5GB DVD-R DL disc for Windows 10 22H2
+## Solution 2: Use a 8.5 GB DVD-R DL disc for Windows 10 22H2
 
-Some suggested [using the less commonly-available DVD-R DL (dual layer) with 8.5GB capacity][dvd-r-dl] 
+Some suggested [using the less commonly-available DVD-R DL (dual layer) with 8.5 GB capacity][dvd-r-dl] 
 as a solution. It is a simple and straightforward option if you have some 
 DVD-R DL readily available. However, such DVD-R DL are less commonly found in 
 offices and homes.
 
 Thus, I am not going to spend more money and time hunting around for them.
 
-## Create and use a modified, stripped down WIndows 10 22H2 ISO image
+## Solution 3: Create and use a modified, stripped down WIndows 10 22H2 ISO image
 
 This idea came from Redditor *heartprairie* who reported customizing the
 installation media ISO image created by Windows 10 Media Creation Tool 
@@ -85,10 +90,12 @@ Here's how I did it based on the brief description.
    `W10_22H2_F.iso`) with [NTLite][ntlite]
    ![NTLite Create ISO](/blog/assets/images/2024-02-29-w10-22h2-ntlite-iso-create.png)
    ![NTLite Creating ISO image](/blog/assets/images/2024-02-29-w10-22h2-ntlite-iso-creating.png)
-8. Check that the new ISO images `W10_22H2_F.iso` is about 4.46GB now -- small 
-   enough to fit onto a normal 4.7GB DVD-R -- compared to the original 4.77GB 
+8. Check that the new ISO images `W10_22H2_F.iso` is about 4.46 GB now -- small 
+   enough to fit onto a normal 4.7 GB DVD-R -- compared to the original 4.77 GB 
    `W10_22H2.iso` ISO image created by Windows 10 Media Creation Tool.
+   
    ![Windows 10 22H2 ISO size comparison](/blog/assets/images/2024-02-29-w10-22h2-iso-size.png)
+   
 9. Test the modified installation media ISO image. During the setup, notice 
    that the list of operating system options available to choose from 
    correspond with the entries in the `install.esd` in [NTLite][ntlite]
@@ -97,8 +104,27 @@ Here's how I did it based on the brief description.
     ![Windows 10 22H2 Home](/blog/assets/images/2024-02-29-w10-22h2-home.png)
     ![Windows 10 22H2 Pro](/blog/assets/images/2024-02-29-w10-22h2-pro.png)
    
-Thus I can conclude that my remastered ISO image is able to run Windows 10 22H2 
-setup successfully.
+Thus I can conclude that my remastered ISO image is able to boot and complete 
+Windows 10 22H2 setup successfully.
+
+## Solution 4: Reuse ISO image on [Internet Archive][archive-org] made by others
+
+It has come to my attention that there are some ISO images of Windows 10 22H2, 
+21H2, 20H2 etc. being offered on the [Internet Archive][archive-org]. These may 
+or may not have undergone similar modifications to shrink them to fit onto a 
+DVD-R. The problem is we may never know what has been done to the ISO image.
+
+Some users have reported success in using them for installation in their 
+reviews or comments.
+
+While these uploads have undergone some antivirus scanning during their 
+uploading process, we can never be sure if the ISO image and the files within 
+have been modified, replaced or tampered with. We simply do not know if they 
+would even work in the first place, or if they have been tested by the 
+uploaders who created them.
+
+This solution is *NOT RECOMMENDED* by me. So you have been forewarned! If you
+decide to take the risk and try them, you shall bear the responsibility.
 
 [build-1803]: https://www.reddit.com/r/Windows10/comments/ydyks8/if_you_need_to_install_windows_10_via_dvd/
 [dvd-r-dl]: https://www.reddit.com/r/windows/comments/jh8obu/bug_windows_10_media_creation_tools_iso_files_for/
@@ -108,6 +134,7 @@ setup successfully.
 [winrar]: https://www.win-rar.com/open-iso-file.html
 [nero]: https://www.nero.com/eng/products/nero-burning-rom/
 [cdburnerxp]: https://cdburnerxp.se/en/home
+[archive-org]: https://archive.org/
 
 
 
