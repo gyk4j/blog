@@ -9,7 +9,8 @@ Just a little update after 2 weeks.
 
 As a recap, starting from Dec 2022 when I started on [WOLS][wols], I began 
 coding on a daily basis just to see if I still could do programming, and if I
-still wanted to do it. Work on [WOLS][wols] probably ended around Jun 2023. 
+still wanted to do it. I tested [ProGuard][proguard] for Java code obfuscation 
+and work on [WOLS][wols] ended around Jun 2023. 
 
 This continued with [WRECK][wreck] starting Jul 2023, and ended in Oct 2023.
 
@@ -22,17 +23,20 @@ prototype with various database, email, file and web server containers. Though
 eventually I didn't put them together as a GitHub project repository as a 
 working application, bits and pieces can be found in my [tmp][tmp] repository.
 
-In Nov 2023, I started my [web site][www] and [blog][blog].
+In Nov 2023, I started my [web site][www] and [blog][blog]. I also studied and 
+experimented with the various GitHub options (e.g. 2 Factor Authentication, SSH,
+credential and access token storage and caching) to secure my commits and 
+merging with commit signing and verification.
 
 Then I had the wild idea to redo a C#.NET version [WRECK.NET][wreck-net], 
 initially as a completely new application with minimal resemblance to the 
 original Java implementation, and intended as an experiment to see how easy or 
 difficult it would be to do a similar application on .NET instead. Would it be 
-faster or easier to develop? This phase took place in Dec 2023.
+faster or easier to develop? I also experimented with continuous integration 
+(CI) on [GitHub Actions][github-actions] This phase took place in Dec 2023.
 
 With the major functionalities tested and proven to work with various third 
-party software, I experimented with continuous integration (CI) on 
-[GitHub Actions][github-actions] and began to port as many required Java 
+party software,  and began to port as many required Java 
 classes to C# as possible. I completed this phase between Jan 2024 and Mar 2024.
 
 ## Timeline Summary
@@ -69,12 +73,13 @@ back together again.
 Bye. So long. Till we meet again.
 
 [wols]: https://github.com/gyk4j/wols
+[proguard]: https://www.guardsquare.com/proguard
 [wreck]: https://github.com/gyk4j/wreck
 [github]: https://github.com/
 [react]: https://react.dev/
 [golang]: https://go.dev/
 [docker]: https://www.docker.com/
-[tmp]: https://github.com/gyk4j/tmp
+[tmp]: https://github.com/gyk4j/tmp/tree/main/docker
 [wreck-net]: https://github.com/gyk4j/wreck-net
 [github-actions]: https://github.com/features/actions
 [gyk4j]: https://github.com/gyk4j
