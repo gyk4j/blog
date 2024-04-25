@@ -84,7 +84,7 @@ concise reminder of the registry keys and values since I always forget them. As
 a software developer/engineer, this may come in handy one day when it comes to
 integrating my software into Explorer.
 
-[missgoth]: https://littlemissgoth.livejournal.com/107835.html
+[littlemissgoth]: https://littlemissgoth.livejournal.com/107835.html
 [skull-cmd]: https://github.com/gyk4j/tmp/blob/main/explorer-context-menu/skull.cmd
 [add-cmd]: https://github.com/gyk4j/tmp/blob/main/explorer-context-menu/add.cmd
 [delete-cmd]: https://github.com/gyk4j/tmp/blob/main/explorer-context-menu/delete.cmd
