@@ -1,1 +1,2 @@
-![Under Construction](https://raw.github.com/gyk4j/blog/main/assets/images/2023-12-31-under-construction.svg?sanitize=true)
+Please visit :point_right: [https://gyk4j.github.io/blog/](https://gyk4j.github.io/blog/) :point_left:.
+
